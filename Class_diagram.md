@@ -1,7 +1,7 @@
 ```mermaid
 classDiagram
     User "1" <|--  "*" Video : uploads
-    Video "1" -- "1" Feedback : has
+    Video "1" <|-- "1" Feedback : has
 
     class User {
         -UserID: String
@@ -9,20 +9,25 @@ classDiagram
         -Email: String
         -Password: String
         +UploadVideo()
-        +ViewFeedback()
+        +ViewFeed_His()
+        +Authenticate_log()
+        +Sign_up()
         +get_user_ID()
         +get_user_name()
-        +get_user_email()
+        +get_email()
+        +get_password()
         +set_user_ID()
         +set_user_name()
-        +set_user_email()
-        +set_user_password()
+        +set_email()
+        +set_password()
     }
     class Video {
         -VideoID: String
         -Video_url: String
         -video_date: String
-        -video_description: String
+        -videoai_resp: String
+        +transcript_gen()
+        +AddFeedback()
         +get_video_ID()
         +get_url()
         +get_date()
@@ -31,14 +36,10 @@ classDiagram
         +set_url()
         +set_date()
         +set_decription()
-        +AddFeedback()
-
     }
     class Feedback {
-        +FeedbackID
-        +VideoID
+        -FeedbackID: String
+        -Feedback_result: String
         +get_fedback_ID()
-        +get_video_ID()
         +set_fedback_ID()
-        +set_video_ID()
     }
