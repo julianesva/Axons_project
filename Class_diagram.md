@@ -1,7 +1,10 @@
 ```mermaid
 classDiagram
-    User "1" <|--  "*" Video : uploads
-    Video "1" <|-- "1" Feedback : has
+    User "1" --  "*" Video : uploads
+    User "1" --  "1" Authentication : has
+    Video "1" -- "1" Feedback : has
+    
+
 
     class User {
         -UserID: String
@@ -10,8 +13,6 @@ classDiagram
         -Password: String
         +UploadVideo()
         +ViewFeed_His()
-        +Authenticate_log()
-        +Sign_up()
         +get_user_ID()
         +get_user_name()
         +get_email()
@@ -42,4 +43,11 @@ classDiagram
         -Feedback_result: String
         +get_fedback_ID()
         +set_fedback_ID()
+    }
+    class Authentication{
+        -Usuario_id: String
+        -Authentication_meth: String
+        +Log_in()
+        +Log_out()
+        +Sign_up()
     }
